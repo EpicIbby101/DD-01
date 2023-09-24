@@ -1,0 +1,27 @@
+/* Center-align the restaurant list */
+#restaurantList {
+    text-align: center;
+  }
+  
+  /* Style individual restaurant items */
+  .restaurant-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Style thumbnail image */
+  .restaurant-item img {
+    max-width: 100px;
+    max-height: 100px;
+    margin-right: 10px;
+  }
+  
+  /* Style restaurant details */
+  .restaurant-details {
+    flex-grow: 1;
+  }
+  
