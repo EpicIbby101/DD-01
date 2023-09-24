@@ -1,5 +1,5 @@
 async function fetchData() {
-  const url = 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchRestaurants?locationId=304554';
+  const url = 'https://tripadvisor16.p.rapidapi.com/api/v1/restaurant/searchLocation?query=mumbai';
   const options = {
     method: 'GET',
     headers: {
@@ -10,7 +10,7 @@ async function fetchData() {
 
   try {
     const response = await fetch(url, options);
-    const result = await response.text();
+    const result = await response.json();
     console.log(result);
   } catch (error) {
     console.error(error);
@@ -19,3 +19,5 @@ async function fetchData() {
 
 // Call the async function to execute it
 fetchData();
+
+const newAPI = 'AIzaSyCr4L-ujpoWQRdl3HxzNOAtZhT3xGzs6zg'
