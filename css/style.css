@@ -1,5 +1,9 @@
-.showcase-background-img {
-    background-image: brightness(50);
+.title {
+    align-items: center;
+}
+
+.example {
+    align-items: center;
 }
 
 * {
@@ -39,8 +43,3 @@
     clear: both;
     display: table;
   }
-
-/* .search-bar {
-    position: relative;
-    text-align: center;
-  } */
