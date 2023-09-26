@@ -90,3 +90,13 @@ form.example::after {
 .restaurant-details {
   flex-grow: 1;
 }
+
+
+.info-box {
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  display: none;
+  z-index: 1000;
+}

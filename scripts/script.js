@@ -7,6 +7,15 @@ function initMap() {
       zoom: 15,
     });
 
+    $(document).on("mouseenter", ".restaurant-item, .featured-item", function () {
+      const placeInfo = getPlaceInfo($(this).data("place-id")); // Fetch additional information for the place (e.g., contact details)
+      showInfoBox($(this), placeInfo);
+    });
+
+    $(document).on("mouseleave", ".restaurant-item, .featured-item", function () {
+      hideInfoBox();
+    });
+
     const placesService = new google.maps.places.PlacesService(map);
 
     // Handle the "Search" button click event
@@ -28,7 +37,6 @@ function initMap() {
 
           // Create a Bootstrap row for the grid
           const row = $("<div class='row'></div>");
-
           const featuredPlacesSection = $("<div class='col-md-12 mt-4'></div>");
           featuredPlacesSection.html("<h2>- Featured Places -</h2>");
 
@@ -36,7 +44,7 @@ function initMap() {
             location: location,
             radius: 5000, // Adjust the radius as needed
             types: ["restaurant"], // Adjust the types as needed
-            keyword: "featured", // Add a keyword for featured places
+            keyword: "point_of_interest", // Add a keyword for featured places
           };
 
           placesService.nearbySearch(
@@ -47,7 +55,6 @@ function initMap() {
                 const shuffleFeaturedResults = shuffleArray(results);
                 // Create a Bootstrap row for featured places
                 const featuredRow = $("<div class='row'></div>");
-
                 // Limit the number of featured places to 3
                 const featuredResults = results.slice(0, 3);
 
@@ -71,13 +78,12 @@ function initMap() {
                     const thumbnailImage = $("<img>")
                       .attr("src", photoUrl)
                       .css({
-                        width: "100%", // Set the width to 100%
-                        height: "100%", // Set the height to 100%
+                        width: "100%",
+                        height: "100%",
                         objectFit: "cover", // Maintain aspect ratio and cover the container
                       });
                     featuredItem.append(thumbnailImage);
                   }
-
                   // Display featured place name, address, and rating
                   const details = $("<div class='restaurant-details'></div>");
                   details.append(`<strong>${featuredName}</strong><br>`);
@@ -89,7 +95,6 @@ function initMap() {
                   col.append(featuredItem); // Append to column
                   featuredRow.append(col); // Append to featuredRow
                 });
-
                 // Append the featured places row to the featuredPlacesSection
                 featuredPlacesSection.append(featuredRow);
                 featuredPlacesSection.append("<hr>");
@@ -133,8 +138,8 @@ function initMap() {
                     maxHeight: 200,
                   });
                   const thumbnailImage = $("<img>").attr("src", photoUrl).css({
-                    width: "100%", // Set the width to 100%
-                    height: "100%", // Set the height to 100%
+                    width: "100%",
+                    height: "100%",
                     objectFit: "cover", // Maintain aspect ratio and cover the container
                   });
                   restaurantItem.append(thumbnailImage);
@@ -173,4 +178,30 @@ function shuffleArray(array) {
   return array;
 }
 
-const newAPI = "AIzaSyCr4L-ujpoWQRdl3HxzNOAtZhT3xGzs6zg";
+function getPlaceInfo(placeId) {
+  // You can make an API request here to fetch additional information
+  // For demonstration purposes, let's assume it's a contact phone number
+  // Replace this with your actual API call
+  return "Contact: 123-456-7890";
+}
+
+// Function to show the floating info box
+function showInfoBox(item, info) {
+  const infoBox = $("#infoBox");
+  const offset = item.offset();
+  const height = item.height();
+
+  infoBox.html(info);
+
+  infoBox.css({
+    top: offset.top + height + 10, // Adjust the position as needed
+    left: offset.left,
+  });
+
+  infoBox.show();
+}
+
+// Function to hide the floating info box
+function hideInfoBox() {
+  $("#infoBox").hide();
+}
