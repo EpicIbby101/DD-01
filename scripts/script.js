@@ -205,3 +205,13 @@ function showInfoBox(item, info) {
 function hideInfoBox() {
   $("#infoBox").hide();
 }
+
+// new API (openai API)
+
+// Function to display a chat message in the chat interface
+function displayChatMessage(message, role) {
+  const chatbotResponseDiv = document.getElementById('chatbotResponse');
+  const messageParagraph = document.createElement('p');
+  messageParagraph.innerHTML = `<strong>${role === 'user' ? 'User' : 'Chatbot'}:</strong> ${message}`;
+  chatbotResponseDiv.appendChild(messageParagraph);
+}
