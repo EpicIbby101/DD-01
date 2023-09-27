@@ -266,3 +266,15 @@ document.getElementById('askButton').addEventListener('click', function () {
         displayChatMessage('An error occurred while processing your request. Please try again later.', 'chatbot');
       }
     })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      // Handle API request failure
+      console.error('API Request Failed:', textStatus, errorThrown);
+
+      // Display an error message to the user
+      displayChatMessage(userQuestion, 'user'); // Display user's message
+      displayChatMessage('An error occurred while processing your request. Please try again later.', 'chatbot'); // Display error message
+
+      // Clear the user input field
+      document.getElementById('userInput').value = '';
+    });
+});
