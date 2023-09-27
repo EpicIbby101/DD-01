@@ -51,7 +51,7 @@ form.example::after {
 
 /* Center-align the restaurant list */
 #restaurantList {
-  text-align: start;
+  text-align: center;
 }
 
 /* Style individual restaurant items */

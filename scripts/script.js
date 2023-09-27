@@ -83,6 +83,7 @@ function initMap() {
                   const featuredAddress = place.vicinity;
                   const featuredRating = place.rating;
                   const featuredPhotos = place.photos;
+                  const featuredPrice = place.price_level;
 
                   // Create and append featured place list items
                   const listItem = $("<div class='featured-item'></div>");
@@ -105,7 +106,8 @@ function initMap() {
                   const details = $("<div class='restaurant-details'></div>");
                   details.append(`<strong>${featuredName}</strong><br>`);
                   details.append(`<span>${featuredAddress}</span><br>`);
-                  details.append(`Rating: ${featuredRating}`);
+                  details.append(`Rating: ${featuredRating}<br>`);
+                  details.append(`Price Level: ${featuredPrice}`);
 
                   featuredItem.append(details); // Append to featuredItem
 
@@ -145,6 +147,7 @@ function initMap() {
                 const restaurantAddress = place.vicinity;
                 const restaurantRating = place.rating;
                 const photos = place.photos;
+                const restaurantPrice = place.price_level;
                 
 
                 // Create and append restaurant list items
@@ -167,7 +170,9 @@ function initMap() {
                 const details = $("<div class='restaurant-details'></div>");
                 details.append(`<strong>${restaurantName}</strong><br>`);
                 details.append(`<span>${restaurantAddress}</span><br>`);
-                details.append(`Rating: ${restaurantRating}`);
+                details.append(`Rating: ${restaurantRating}<br>`);
+                details.append(`Price Level: ${restaurantPrice}`);
+                
 
                 restaurantItem.append(details); // Append to restaurantItem
 
