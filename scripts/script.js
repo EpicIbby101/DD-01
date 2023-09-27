@@ -7,14 +7,31 @@ function initMap() {
       zoom: 15,
     });
 
-    $(document).on("mouseenter", ".restaurant-item, .featured-item", function () {
-      const placeInfo = getPlaceInfo($(this).data("place-id")); // Fetch additional information for the place (e.g., contact details)
-      showInfoBox($(this), placeInfo);
+    let hoveringInfoBox = false; 
+
+    $(document).on(
+      "mouseenter",
+      ".restaurant-item, .featured-item",
+      function () {
+        const placeInfo = getPlaceInfo($(this).data("place-id")); // Fetch additional information for the place (e.g., contact details)
+        showInfoBox($(this), placeInfo);
+      }
+    );
+
+    $('#infoBox')
+    .on('mouseenter', function () {
+        hoveringInfoBox = true;
+    })
+    .on('mouseleave', function () {
+        hoveringInfoBox = false;
+        hideInfoBox();
     });
 
-    $(document).on("mouseleave", ".restaurant-item, .featured-item", function () {
-      hideInfoBox();
-    });
+    $(document).on('mouseleave', '.restaurant-item', function () {
+      if (!hoveringInfoBox) {
+          hideInfoBox();
+      }
+  });
 
     const placesService = new google.maps.places.PlacesService(map);
 
@@ -66,6 +83,7 @@ function initMap() {
                   const featuredAddress = place.vicinity;
                   const featuredRating = place.rating;
                   const featuredPhotos = place.photos;
+                  const featuredPrice = place.price_level;
 
                   // Create and append featured place list items
                   const listItem = $("<div class='featured-item'></div>");
@@ -88,7 +106,8 @@ function initMap() {
                   const details = $("<div class='restaurant-details'></div>");
                   details.append(`<strong>${featuredName}</strong><br>`);
                   details.append(`<span>${featuredAddress}</span><br>`);
-                  details.append(`Rating: ${featuredRating}`);
+                  details.append(`Rating: ${featuredRating}<br>`);
+                  details.append(`Price Level: ${featuredPrice}`);
 
                   featuredItem.append(details); // Append to featuredItem
 
@@ -128,6 +147,8 @@ function initMap() {
                 const restaurantAddress = place.vicinity;
                 const restaurantRating = place.rating;
                 const photos = place.photos;
+                const restaurantPrice = place.price_level;
+                
 
                 // Create and append restaurant list items
                 const listItem = $("<div class='restaurant-item'></div>");
@@ -149,7 +170,9 @@ function initMap() {
                 const details = $("<div class='restaurant-details'></div>");
                 details.append(`<strong>${restaurantName}</strong><br>`);
                 details.append(`<span>${restaurantAddress}</span><br>`);
-                details.append(`Rating: ${restaurantRating}`);
+                details.append(`Rating: ${restaurantRating}<br>`);
+                details.append(`Price Level: ${restaurantPrice}`);
+                
 
                 restaurantItem.append(details); // Append to restaurantItem
 
@@ -178,11 +201,46 @@ function shuffleArray(array) {
   return array;
 }
 
+// Function to generate placeholder place details
 function getPlaceInfo(placeId) {
-  // You can make an API request here to fetch additional information
-  // For demonstration purposes, let's assume it's a contact phone number
-  // Replace this with your actual API call
-  return "Contact: 123-456-7890";
+  // For demonstration purposes, create placeholder information
+  const placeInfo = {
+    address: "69 Baloney Ave, Somewhere, The City",
+    openingTimes: [
+      "Mon-Fri: 9:00 AM - 10:00 PM",
+      "Sat-Sun: 10:00 AM - 9:00 PM",
+    ],
+    website: "https://www.example.com",
+    phone: "123-456-7890",
+  };
+
+  // Format the information as HTML
+  const infoHTML = `
+  <div class="place-info">
+  <div class="info-row">
+      <span class="info-label">Address:</span>
+      <span class="info-value">${placeInfo.address}</span>
+  </div>
+  <div class="info-row">
+      <span class="info-label">Opening Times:</span>
+      <ul class="opening-times-list">
+          ${placeInfo.openingTimes
+              .map((time) => `<li>${time}</li>`)
+              .join('')}
+      </ul>
+  </div>
+  <div class="info-row">
+      <span class="info-label">Website:</span>
+      <a class="info-link" href="${placeInfo.website}" target="_blank">${placeInfo.website}</a>
+  </div>
+  <div class="info-row">
+      <span class="info-label">Phone:</span>
+      <span class="info-value">${placeInfo.phone}</span>
+  </div>
+</div>
+`;
+
+  return infoHTML;
 }
 
 // Function to show the floating info box
