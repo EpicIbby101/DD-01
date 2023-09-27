@@ -9,6 +9,7 @@ function initMap() {
 
     let hoveringInfoBox = false; 
 
+
     $(document).on(
       "mouseenter",
       ".restaurant-item, .featured-item",
