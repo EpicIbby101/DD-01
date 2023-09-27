@@ -178,12 +178,27 @@ function shuffleArray(array) {
   return array;
 }
 
+// Function to generate placeholder place details
 function getPlaceInfo(placeId) {
-  // You can make an API request here to fetch additional information
-  // For demonstration purposes, let's assume it's a contact phone number
-  // Replace this with your actual API call
-  return "Contact: 123-456-7890";
+  // For demonstration purposes, create placeholder information
+  const placeInfo = {
+      address: '123 Main St, City',
+      openingTimes: 'Mon-Fri: 9:00 AM - 10:00 PM, Sat-Sun: 10:00 AM - 9:00 PM',
+      website: 'https://www.example.com',
+      phone: '123-456-7890',
+  };
+
+  // Format the information as HTML
+  const infoHTML = `
+      <strong>Address:</strong> ${placeInfo.address}<br>
+      <strong>Opening Times:</strong> ${placeInfo.openingTimes}<br>
+      <strong>Website:</strong> <a href="${placeInfo.website}" target="_blank">${placeInfo.website}</a><br>
+      <strong>Phone:</strong> ${placeInfo.phone}
+  `;
+
+  return infoHTML;
 }
+
 
 // Function to show the floating info box
 function showInfoBox(item, info) {

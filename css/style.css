@@ -62,6 +62,7 @@ form.example::after {
   border: 1px solid #ddd;
   padding: 10px;
   background-color: #f9f9f9;
+  border-radius: 25px;
 }
 
 .featured-item {
@@ -71,6 +72,7 @@ form.example::after {
   border: 1px solid #05eaff;
   padding: 10px;
   background-color: #f9f9f9;
+  border-radius: 25px;
 }
 
 /* Style thumbnail image */
@@ -78,12 +80,14 @@ form.example::after {
   max-width: 140px;
   max-height: 140px;
   margin-right: 10px;
+  border-radius: 25px;
 }
 
 .restaurant-item img {
   max-width: 125px;
   max-height: 125px;
   margin-right: 10px;
+  border-radius: 25px;
 }
 
 /* Style restaurant details */
