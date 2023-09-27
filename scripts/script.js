@@ -242,3 +242,27 @@ document.getElementById('askButton').addEventListener('click', function () {
       }
     ])
   };
+  // Make the API request
+  $.ajax(settings)
+    .done(function (response) {
+      // Console log the API response
+      console.log('API Response:', response);
+
+      // Check if the response contains the chatbot's answer
+      if (Array.isArray(response) && response.length > 0 && response[0].content) {
+        const chatbotAnswer = response[0].content;
+
+        // Display the chatbot's response
+        displayChatMessage(userQuestion, 'user'); // Display user's message
+        displayChatMessage(chatbotAnswer, 'chatbot'); // Display chatbot's response
+
+        // Clear the user input field
+        document.getElementById('userInput').value = '';
+      } else {
+        // Handle cases where the response does not contain chatbot content
+        console.error('API response does not contain chatbot content:', response);
+
+        // Display an appropriate error message to the user
+        displayChatMessage('An error occurred while processing your request. Please try again later.', 'chatbot');
+      }
+    })
