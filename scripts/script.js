@@ -223,3 +223,22 @@ document.getElementById('askButton').addEventListener('click', function () {
     alert('Please enter a question.');
     return;
   }
+  // Make the API request
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: 'https://chatgpt-api8.p.rapidapi.com/',
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'X-RapidAPI-Key': 'dd689b8e4dmshbfcda1d5393a655p18772cjsnea1824fa60c8',
+      'X-RapidAPI-Host': 'chatgpt-api8.p.rapidapi.com'
+    },
+    processData: false,
+    data: JSON.stringify([
+      {
+        "content": userQuestion, // Using userQuestion here
+        "role": "user"
+      }
+    ])
+  };
