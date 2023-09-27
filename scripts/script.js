@@ -215,3 +215,11 @@ function displayChatMessage(message, role) {
   messageParagraph.innerHTML = `<strong>${role === 'user' ? 'User' : 'Chatbot'}:</strong> ${message}`;
   chatbotResponseDiv.appendChild(messageParagraph);
 }
+// Handle user's click on the "Ask" button
+document.getElementById('askButton').addEventListener('click', function () {
+  // Define userQuestion within the scope of this function
+  const userQuestion = document.getElementById('userInput').value;
+  if (userQuestion.trim() === '') {
+    alert('Please enter a question.');
+    return;
+  }
