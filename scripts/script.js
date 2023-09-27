@@ -7,14 +7,31 @@ function initMap() {
       zoom: 15,
     });
 
-    $(document).on("mouseenter", ".restaurant-item, .featured-item", function () {
-      const placeInfo = getPlaceInfo($(this).data("place-id")); // Fetch additional information for the place (e.g., contact details)
-      showInfoBox($(this), placeInfo);
+    let hoveringInfoBox = false; 
+
+    $(document).on(
+      "mouseenter",
+      ".restaurant-item, .featured-item",
+      function () {
+        const placeInfo = getPlaceInfo($(this).data("place-id")); // Fetch additional information for the place (e.g., contact details)
+        showInfoBox($(this), placeInfo);
+      }
+    );
+
+    $('#infoBox')
+    .on('mouseenter', function () {
+        hoveringInfoBox = true;
+    })
+    .on('mouseleave', function () {
+        hoveringInfoBox = false;
+        hideInfoBox();
     });
 
-    $(document).on("mouseleave", ".restaurant-item, .featured-item", function () {
-      hideInfoBox();
-    });
+    $(document).on('mouseleave', '.restaurant-item', function () {
+      if (!hoveringInfoBox) {
+          hideInfoBox();
+      }
+  });
 
     const placesService = new google.maps.places.PlacesService(map);
 
@@ -128,6 +145,7 @@ function initMap() {
                 const restaurantAddress = place.vicinity;
                 const restaurantRating = place.rating;
                 const photos = place.photos;
+                
 
                 // Create and append restaurant list items
                 const listItem = $("<div class='restaurant-item'></div>");
@@ -182,23 +200,43 @@ function shuffleArray(array) {
 function getPlaceInfo(placeId) {
   // For demonstration purposes, create placeholder information
   const placeInfo = {
-      address: '123 Main St, City',
-      openingTimes: 'Mon-Fri: 9:00 AM - 10:00 PM, Sat-Sun: 10:00 AM - 9:00 PM',
-      website: 'https://www.example.com',
-      phone: '123-456-7890',
+    address: "69 Baloney Ave, Somewhere, The City",
+    openingTimes: [
+      "Mon-Fri: 9:00 AM - 10:00 PM",
+      "Sat-Sun: 10:00 AM - 9:00 PM",
+    ],
+    website: "https://www.example.com",
+    phone: "123-456-7890",
   };
 
   // Format the information as HTML
   const infoHTML = `
-      <strong>Address:</strong> ${placeInfo.address}<br>
-      <strong>Opening Times:</strong> ${placeInfo.openingTimes}<br>
-      <strong>Website:</strong> <a href="${placeInfo.website}" target="_blank">${placeInfo.website}</a><br>
-      <strong>Phone:</strong> ${placeInfo.phone}
-  `;
+  <div class="place-info">
+  <div class="info-row">
+      <span class="info-label">Address:</span>
+      <span class="info-value">${placeInfo.address}</span>
+  </div>
+  <div class="info-row">
+      <span class="info-label">Opening Times:</span>
+      <ul class="opening-times-list">
+          ${placeInfo.openingTimes
+              .map((time) => `<li>${time}</li>`)
+              .join('')}
+      </ul>
+  </div>
+  <div class="info-row">
+      <span class="info-label">Website:</span>
+      <a class="info-link" href="${placeInfo.website}" target="_blank">${placeInfo.website}</a>
+  </div>
+  <div class="info-row">
+      <span class="info-label">Phone:</span>
+      <span class="info-value">${placeInfo.phone}</span>
+  </div>
+</div>
+`;
 
   return infoHTML;
 }
-
 
 // Function to show the floating info box
 function showInfoBox(item, info) {
