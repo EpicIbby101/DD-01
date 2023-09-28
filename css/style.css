@@ -82,6 +82,7 @@ form.example::after {
   display: flex;
   align-items: center;
   margin: 10px 0;
+  margin-left: 5px;
   border: 1px solid #ddd;
   padding: 10px;
   background-color: #f9f9f9;
@@ -97,6 +98,7 @@ form.example::after {
   display: flex;
   align-items: center;
   margin: 10px 0;
+  margin-left: 5px;
   border: 1px solid #05eaff;
   padding: 10px;
   background-color: #f9f9f9;

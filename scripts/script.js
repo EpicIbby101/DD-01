@@ -49,7 +49,7 @@ function initMap() {
           // Define the search request for restaurants
           const request = {
             location: location,
-            radius: 5000,
+            radius: 1000,
             types: ["restaurant"],
           };
 
@@ -60,7 +60,7 @@ function initMap() {
 
           const featuredRequest = {
             location: location,
-            radius: 5000, // Adjust the radius as needed
+            radius: 1000, // Adjust the radius as needed
             types: ["restaurant"], // Adjust the types as needed
             keyword: "point_of_interest", // Add a keyword for featured places
           };
@@ -79,7 +79,8 @@ function initMap() {
                 $.each(featuredResults, function (index, place) {
                   const col = $("<div class='col-md-4'></div>");
                   const featuredItem = $("<div class='featured-item'></div>");
-                  featuredItem.css("height", "200px");
+                  featuredItem.css("height", "150px");
+                  // featuredItem.css("width", "480px")
                   const featuredName = place.name;
                   const featuredAddress = place.vicinity;
                   const featuredRating = place.rating;
@@ -144,6 +145,7 @@ function initMap() {
                 const col = $("<div class='col-md-4'></div>");
                 const restaurantItem = $("<div class='restaurant-item'></div>");
                 restaurantItem.css("height", "140px");
+                // restaurantItem.css("width", "480px")
                 const restaurantName = place.name;
                 const restaurantAddress = place.vicinity;
                 const restaurantRating = place.rating;
