@@ -7,7 +7,7 @@ function initMap() {
       zoom: 15,
     });
 
-    let hoveringInfoBox = false; 
+    let hoveringInfoBox = false;
 
 
     $(document).on(
@@ -20,19 +20,19 @@ function initMap() {
     );
 
     $('#infoBox')
-    .on('mouseenter', function () {
+      .on('mouseenter', function () {
         hoveringInfoBox = true;
-    })
-    .on('mouseleave', function () {
+      })
+      .on('mouseleave', function () {
         hoveringInfoBox = false;
         hideInfoBox();
-    });
+      });
 
     $(document).on('mouseleave', '.restaurant-item', function () {
       if (!hoveringInfoBox) {
-          hideInfoBox();
+        hideInfoBox();
       }
-  });
+    });
 
     const placesService = new google.maps.places.PlacesService(map);
 
@@ -149,7 +149,7 @@ function initMap() {
                 const restaurantRating = place.rating;
                 const photos = place.photos;
                 const restaurantPrice = place.price_level;
-                
+
 
                 // Create and append restaurant list items
                 const listItem = $("<div class='restaurant-item'></div>");
@@ -173,7 +173,7 @@ function initMap() {
                 details.append(`<span>${restaurantAddress}</span><br>`);
                 details.append(`Rating: ${restaurantRating}<br>`);
                 details.append(`Price Level: ${restaurantPrice}`);
-                
+
 
                 restaurantItem.append(details); // Append to restaurantItem
 
@@ -226,8 +226,8 @@ function getPlaceInfo(placeId) {
       <span class="info-label">Opening Times:</span>
       <ul class="opening-times-list">
           ${placeInfo.openingTimes
-              .map((time) => `<li>${time}</li>`)
-              .join('')}
+      .map((time) => `<li>${time}</li>`)
+      .join('')}
       </ul>
   </div>
   <div class="info-row">
@@ -266,4 +266,79 @@ function showInfoBox(item, info) {
 // Function to hide the floating info box
 function hideInfoBox() {
   $("#infoBox").hide();
+}
+// new API (openai API)
+
+// Function to display a chat message in the chat interface
+function displayChatMessage(message, role) {
+  const chatbotResponseDiv = document.getElementById('chatbotResponse');
+  const messageParagraph = document.createElement('p');
+  messageParagraph.innerHTML = `<strong>${role === 'user' ? 'User' : 'Chatbot'}:</strong> ${message}`;
+  chatbotResponseDiv.appendChild(messageParagraph);
+}
+// Handle user's click on the "Ask" button
+document.getElementById('askButton').addEventListener('click', function () {
+  // Define userQuestion within the scope of this function
+  const userQuestion = document.getElementById('userInput').value;
+  if (userQuestion.trim() === '') {
+    alert('Please enter a question.');
+    return;
+  }
+  // Make the API request
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: 'https://chatgpt-api8.p.rapidapi.com/',
+    method: 'POST',
+    headers: {
+      'content-type': 'application/json',
+      'X-RapidAPI-Key': 'dd689b8e4dmshbfcda1d5393a655p18772cjsnea1824fa60c8',
+      'X-RapidAPI-Host': 'chatgpt-api8.p.rapidapi.com'
+    },
+    processData: false,
+    data: JSON.stringify([
+      {
+        "content": userQuestion, // Using userQuestion here
+        "role": "user"
+      }
+    ])
+  };
+  // Make the API request
+  $.ajax(settings)
+    .done(function (response) {
+      // Handle the API response, including error handling
+      handleApiResponse(response, userQuestion);
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      // Handle API request failure
+      console.error('API Request Failed:', textStatus, errorThrown);
+
+      // Display an error message to the user
+      displayChatMessage(userQuestion, 'user'); // Display user's message
+      displayChatMessage('An error occurred while processing your request. Please try again later.', 'chatbot'); // Display error message
+
+      // Clear the user input field
+      document.getElementById('userInput').value = '';
+    });
+});
+
+// Function to handle API response, including error handling
+function handleApiResponse(response, userQuestion) {
+  // Check if the response contains the chatbot's answer
+  if (response && response.text) {
+    const chatbotAnswer = response.text;
+
+    // Display the chatbot's response
+    displayChatMessage(userQuestion, 'user'); // Display user's message
+    displayChatMessage(chatbotAnswer, 'chatbot'); // Display chatbot's response
+
+    // Clear the user input field
+    document.getElementById('userInput').value = '';
+  } else {
+    // Handle cases where the response does not contain chatbot content
+    console.error('API response does not contain chatbot content:', response);
+
+    // Display an appropriate error message to the user
+    displayChatMessage('An error occurred while processing your request. Please try again later.', 'chatbot');
+  }
 }
