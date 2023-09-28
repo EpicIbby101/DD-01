@@ -247,14 +247,17 @@ function getPlaceInfo(placeId) {
 // Function to show the floating info box
 function showInfoBox(item, info) {
   const infoBox = $("#infoBox");
+
+  // Calculate the position based on the hovered item
   const offset = item.offset();
   const height = item.height();
 
+  // Set the position of the info box
   infoBox.html(info);
-
   infoBox.css({
-    top: offset.top + height + 10, // Adjust the position as needed
-    left: offset.left,
+    position: "absolute",
+    top: offset.top + height + 10, // Adjust the vertical position as needed
+    left: offset.left, // Adjust the horizontal position as needed
   });
 
   infoBox.show();
