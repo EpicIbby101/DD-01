@@ -10,8 +10,6 @@
   box-sizing: border-box;
 }
 
-
-
 /* Style the search field */
 form.example input[type="text"] {
   padding: 10px;
@@ -68,6 +66,11 @@ form.example::after {
   padding: 10px;
   background-color: #f9f9f9;
   border-radius: 25px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.restaurant-item:hover {
+  transform: scale(1.05);
 }
 
 .featured-item {
@@ -78,6 +81,12 @@ form.example::after {
   padding: 10px;
   background-color: #f9f9f9;
   border-radius: 25px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.featured-item:hover {
+  transform: scale(1.05);
+
 }
 
 /* Style thumbnail image */
@@ -99,7 +108,6 @@ form.example::after {
 .restaurant-details {
   flex-grow: 1;
 }
-
 
 #info-box {
   position: absolute;
@@ -156,7 +164,6 @@ form.example::after {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-
 }
 
 /* Add custom CSS to make all cards scale slightly on hover */
@@ -198,5 +205,5 @@ footer {
   padding: 20px 0;
   text-align: center;
   height: 100%;
-  max-width: 100%
+  max-width: 100%;
 }
