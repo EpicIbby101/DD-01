@@ -2,6 +2,26 @@
   align-items: center;
 }
 
+#showcase-background-img {
+  position: relative; /* Add relative positioning to create a stacking context */
+  min-height: 620px;
+}
+
+#showcase-background-img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: url('https://source.unsplash.com/1366x768/?food,restaurant');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: brightness(0.4); /* Adjust the brightness as needed */
+  z-index: -1; /* Place it below the content */
+}
+
 .example {
   align-items: center;
 }

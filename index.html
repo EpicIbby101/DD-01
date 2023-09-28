@@ -1,228 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
-<main>
+  <main>
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="./css/style.css" />
+      <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous"
+      />
+      <div class="title">
+        <title>Dine Like An Expert</title>
+      </div>
+    </head>
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-    <div class="title">
-      <title>Dine Like An Expert</title>
-    </div>
-  </head>
-
-  <body>
-    <!-- Navbar section -->
-    <div class="">
-      <nav class="navbar navbar-expand-md bg-dark navbar-dark py-3">
-        <div class="container">
-          <a href="#" class="navbar-brand">Dine & Discover</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navmenu">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a href="#About" class="nav-link">About</a>
-              </li>
-              <li class="nav-item">
-                <a href="#Locations" class="nav-link">Locations</a>
-              </li>
-              <li class="nav-item">
-                <a href="#Contact" class="nav-link">Contact Us</a>
-              </li>
-            </ul>
+    <body>
+      <!-- Navbar section -->
+      <div class="">
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark py-3">
+          <div class="container">
+            <a href="#" class="navbar-brand">Dine & Discover</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navmenu"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                  <a href="#About" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#Locations" class="nav-link">Locations</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#Contact" class="nav-link">Contact Us</a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-    </div>
+        </nav>
+      </div>
 
-    <!-- Showcase section -->
+      <!-- Showcase section -->
 
-    <!-- <section
+      <!-- <section
         class="bg-dark text-light p-5 text-centre text-sm-start" -->
-    <!-- ></section> -->
+      <!-- ></section> -->
 
-    <!-- <div class="card text-center" style="align-items: center;  width: 18rem;">
+      <!-- <div class="card text-center" style="align-items: center;  width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
         </div>
       </div> -->
 
-    <!-- <div class="showcase-title">
+      <!-- <div class="showcase-title">
         <div class="d-sm-flex align-items-centre justify-content-centre">
           <h1>Find Your Flavour</h1>
         </div> -->
-    <div class="d-flex align-items-center justify-content-center" id="showcase-background-img"
-      style="background-image:url('https://source.unsplash.com/1366x768/?food,restaurant,cafe'); background-position: center; background-repeat: no-repeat; background-size: cover; min-height: 620px;">
-      <div class="flex-row align-self-center">
-        <div class=" text-center mt-5 mx-auto">
-          <div class="card text-center mx-auto text-center" style="align-items: center;  width: 40rem;">
-            <div class="card-body">
-              <h1 class="card-title" style="font-size: 50px;">Find Your Flavour</h1>
-            </div>
+      <div
+        class="d-flex align-items-center justify-content-center"
+        id="showcase-background-img"
+      >
+        <div class="flex-row align-self-center">
+          <div class="text-center mt-5 mx-auto">
+            <!-- <div
+              class="card text-center mx-auto text-center"
+              style="align-items: center; width: 40rem"
+            > -->
+              <div class="card-body">
+                <h1 class="card-title mb-5" style="font-size: 100px; color: white;">
+                  - Find Your Flavour -
+                </h1>
+              </div>
+            <!-- </div> -->
           </div>
-
-        </div>
-        <div class="mx-auto mt-2 text-center">
-          <a href="#restaurant-search">
-          <button class="btn-primary-items-centre btn btn-primary btn-lg">Eat with us!</button>
-        </a>
+          <div class="mx-auto mt-2 text-center">
+            <a href="#restaurant-search">
+              <button class="btn-primary-items-centre btn btn-primary btn-lg">
+                Explore With Us
+              </button>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
 
+      <!--Search bar section-->
+      <!-- Icon library -->
+      <section>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+        <!-- The form -->
+        <div class="container">
+          <h2 class="text-center mt-5" id="restaurant-search">
+            Restaurant Search
+          </h2>
+          <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+              <div class="mb-1">
+                <form class="example" action="action_page.php">
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      id="searchInput"
+                      class="form-control"
+                      placeholder="Search for a location..."
+                      name="search"
+                    />
+                    <div class="input-group-append">
+                      <button
+                        type="button"
+                        id="searchButton"
+                        class="btn btn-outline-light"
+                      >
+                        🔍
+                      </button>
+                      <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-    <!--Search bar section-->
-    <!-- Icon library -->
-    <section>
-      <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-      <!-- The form -->
-      <div class="container">
-        <h2 class="text-center mt-5" id="restaurant-search">Restaurant Search</h2>
-        <div class="row mt-4">
-          <div class="col-md-6 offset-md-3">
-            <div class="mb-3">
-              <form class="example" action="action_page.php">
-                <div class="input-group">
-                  <input type="text" id="searchInput" class="form-control" placeholder="Search for a location..."
-                    name="search" />
-                  <div class="input-group-append">
-                    <button type="button" id="searchButton" class="btn btn-outline-light">
-                      🔍
-                    </button>
-                    <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
+      <!--Search results section-->
+      <div class="mt-4" id="featuredPlaces"></div>
+
+      <div class="mt-4">
+        <div id="map"></div>
+        <div id="restaurantList" class="list-group mt-4"></div>
+        <div id="infoBox"></div>
+      </div>
+      <!-- Chatbot section -->
+      <div class="container mt-4">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="card" style="background-color: black">
+              <div class="card-body text-center">
+                <h2
+                  class="card-title"
+                  style="
+                    font-family: 'Courier New', Courier, monospace;
+                    color: white;
+                    font-weight: bold;
+                  "
+                >
+                  Let me answer your trip enquiries
+                </h2>
+                <div id="chatbotResponse" style="color: white">
+                  <!-- Chat messages will be displayed here -->
+                </div>
+                <div class="input-group mt-3">
+                  <input
+                    type="text"
+                    id="userInput"
+                    class="form-control"
+                    placeholder="Ask a question"
+                  />
+                  <button id="askButton" class="btn btn-primary">Ask</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials section -->
+      <section class="container mt-4">
+        <h2 class="text-center">Testimonials</h2>
+        <div class="row">
+          <!-- Card boxes section -->
+          <div class="container mt-4">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card">
+                  <!-- Replace the image path below with the relative path to your images folder -->
+                  <img
+                    src="images/image1.jpg"
+                    class="card-img-top card-img-custom"
+                    alt="Image 1"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Drew Corgis:</h5>
+                    <p class="card-text">
+                      Booking and planning things is very stressful for me.
+                      Thank you for saving my relationship.
+                    </p>
                   </div>
                 </div>
-              </form>
+              </div>
+              <div class="col-md-4">
+                <div class="card bigger-card">
+                  <!-- Added a class for styling -->
+                  <!-- Replace the image path below with the relative path to your images folder -->
+                  <img
+                    src="images/image2.jpg"
+                    class="card-img-top card-img-custom"
+                    alt="Image 2"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Jamie Calooney:</h5>
+                    <p class="card-text">
+                      Man, this brilliant! I cant wait to tell all of Hollywood
+                      about this. What a time to be alive!
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card">
+                  <!-- Replace the image path below with the relative path to your images folder -->
+                  <img
+                    src="images/image3.jpg"
+                    class="card-img-top card-img-custom"
+                    alt="Image 3"
+                  />
+                  <div class="card-body">
+                    <h5 class="card-title">Nazeh Smith:</h5>
+                    <p class="card-text">
+                      I am so impressed I am now thinking of adding a similar
+                      function to my Robot.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!--Search results section-->
-    <div class="mt-4" id="featuredPlaces"></div>
-
-    <div class="mt-4">
-      <div id="map"></div>
-      <div id="restaurantList" class="list-group mt-4"></div>
-      <div id="infoBox"></div>
-
-
-    </div>
-    <!-- Chatbot section -->
-    <div class="container mt-4">
-      <div class="row justify-content-center">
-        <div class="col-md-8">
-          <div class="card" style="background-color: black;">
-            <div class="card-body text-center">
-              <h2 class="card-title"
-                style="font-family: 'Courier New', Courier, monospace; color: white; font-weight: bold;">
-                Let me answer your trip enquiries</h2>
-              <div id="chatbotResponse" style="color: white;">
-                <!-- Chat messages will be displayed here -->
-              </div>
-              <div class="input-group mt-3">
-                <input type="text" id="userInput" class="form-control" placeholder="Ask a question">
-                <button id="askButton" class="btn btn-primary">Ask</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Testimonials section -->
-    <section class="container mt-4">
-      <h2 class="text-center">Testimonials</h2>
-      <div class="row">
-        <!-- Card boxes section -->
-        <div class="container mt-4">
+      <!-- Footer section -->
+      <footer class="bg-dark text-white p-4">
+        <div class="">
           <div class="row">
-            <div class="col-md-4">
-              <div class="card">
-                <!-- Replace the image path below with the relative path to your images folder -->
-                <img src="images/image1.jpg" class="card-img-top card-img-custom" alt="Image 1">
-                <div class="card-body">
-                  <h5 class="card-title">Drew Corgis:</h5>
-                  <p class="card-text">Booking and planning things is very stressful for me. Thank you
-                    for
-                    saving my relationship.</p>
-                </div>
-              </div>
+            <div class="col-md-6">
+              <h5>Privacy Policy</h5>
+              <ul class="list-unstyled">
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+              </ul>
             </div>
-            <div class="col-md-4">
-              <div class="card bigger-card"> <!-- Added a class for styling -->
-                <!-- Replace the image path below with the relative path to your images folder -->
-                <img src="images/image2.jpg" class="card-img-top card-img-custom" alt="Image 2">
-                <div class="card-body">
-                  <h5 class="card-title">Jamie Calooney:</h5>
-                  <p class="card-text">Man, this brilliant! I cant wait to tell all of Hollywood about
-                    this.
-                    What a time to be alive!</p>
-                </div>
-              </div>
+            <div class="col-md-6">
+              <h5>Follow Us</h5>
+              <ul class="list-inline">
+                <li class="list-inline-item">
+                  <a href="#"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="fab fa-facebook"></i></a>
+                </li>
+              </ul>
             </div>
-            <div class="col-md-4">
-              <div class="card">
-                <!-- Replace the image path below with the relative path to your images folder -->
-                <img src="images/image3.jpg" class="card-img-top card-img-custom" alt="Image 3">
-                <div class="card-body">
-                  <h5 class="card-title">Nazeh Smith:</h5>
-                  <p class="card-text">I am so impressed I am now thinking of adding a similar
-                    function to my
-                    Robot.</p>
-                </div>
-              </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <h5>Contact Us</h5>
+              <p>Email: admin@questconquerors.com</p>
+            </div>
+            <div class="col-md-6">
+              <h5>Feedback</h5>
+              <p>Have any feedback? We'd love to hear from you!</p>
+              <button class="btn btn-light">Send Feedback</button>
             </div>
           </div>
         </div>
-        </div>
-    </section>
+      </footer>
 
-    <!-- Footer section -->
-    <footer class="bg-dark text-white p-4">
-      <div class="">
-        <div class="row">
-          <div class="col-md-6">
-            <h5>Privacy Policy</h5>
-            <ul class="list-unstyled">
-              <li><a href="#">Terms of Service</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <h5>Follow Us</h5>
-            <ul class="list-inline">
-              <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-              <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-              <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-md-6">
-            <h5>Contact Us</h5>
-            <p>Email: admin@questconquerors.com</p>
-          </div>
-          <div class="col-md-6">
-            <h5>Feedback</h5>
-            <p>Have any feedback? We'd love to hear from you!</p>
-            <button class="btn btn-light">Send Feedback</button>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr4L-ujpoWQRdl3HxzNOAtZhT3xGzs6zg&libraries=places&callback=initMap"></script>
-  </body>
-</main>
-
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+      <script src="./scripts/script.js"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCr4L-ujpoWQRdl3HxzNOAtZhT3xGzs6zg&libraries=places&callback=initMap"></script>
+    </body>
+  </main>
 </html>
