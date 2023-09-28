@@ -143,7 +143,7 @@ function initMap() {
               $.each(results, function (index, place) {
                 const col = $("<div class='col-md-4'></div>");
                 const restaurantItem = $("<div class='restaurant-item'></div>");
-                restaurantItem.css("height", "150px");
+                restaurantItem.css("height", "140px");
                 const restaurantName = place.name;
                 const restaurantAddress = place.vicinity;
                 const restaurantRating = place.rating;
@@ -156,8 +156,8 @@ function initMap() {
 
                 if (photos && photos.length > 0) {
                   const photoUrl = photos[0].getUrl({
-                    maxWidth: 200,
-                    maxHeight: 200,
+                    maxWidth: 300,
+                    maxHeight: 300,
                   });
                   const thumbnailImage = $("<img>").attr("src", photoUrl).css({
                     width: "100%",
