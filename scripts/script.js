@@ -243,7 +243,6 @@ document.getElementById('askButton').addEventListener('click', function () {
     ])
   };
   // Make the API request
-  // Make the API request
   $.ajax(settings)
     .done(function (response) {
       // Handle the API response, including error handling
