@@ -48,19 +48,22 @@ function initMap() {
 
 function handleLikeButtonClick() {
   const placeId = $(this).data('place-id');
+  const restaurantName = $(this).data('restaurant-name');
   const likedRestaurants = JSON.parse(localStorage.getItem('likedRestaurants')) || [];
 
-  if (likedRestaurants.includes(placeId)) {
-    const index = likedRestaurants.indexOf(placeId);
-    if (index > -1) {
-      likedRestaurants.splice(index, 1);
-    }
+  const existingIndex = likedRestaurants.findIndex(item => item.placeId === placeId);
+
+  if (existingIndex > -1) {
+    // Remove the restaurant from likedRestaurants
+    likedRestaurants.splice(existingIndex, 1);
   } else {
-    likedRestaurants.push(placeId);
+    // Add the restaurant to likedRestaurants
+    likedRestaurants.push({ placeId, restaurantName });
   }
 
   localStorage.setItem('likedRestaurants', JSON.stringify(likedRestaurants));
-  $(this).text(likedRestaurants.includes(placeId) ? '❤️' : '🖤');
+  $(this).text(existingIndex > -1 ? '🖤' : '❤️');
+  displaySavedItems(); // Update the sidebar
 }
 
 function handleSearchButtonClick() {
@@ -306,21 +309,22 @@ function toggleSidebar() {
 }
 
 function displaySavedItems() {
-  const savedItems = JSON.parse(localStorage.getItem('likedRestaurants')) || [];
-  const savedItemsContainer = document.getElementById('savedItems');
-  savedItemsContainer.innerHTML = '';
+  const likedRestaurants = JSON.parse(localStorage.getItem('likedRestaurants')) || [];
+  const savedItemsContainer = $('#savedItems');
+  savedItemsContainer.empty();
 
-  if (savedItems.length === 0) {
-    savedItemsContainer.innerHTML = '<p>No saved items yet.</p>';
+  if (likedRestaurants.length === 0) {
+    savedItemsContainer.html('<p>No saved restaurants yet.</p>');
   } else {
-    savedItems.forEach(function (placeId) {
-      const item = document.createElement('div');
-      item.classList.add('saved-item');
-      item.textContent = placeId;
-      savedItemsContainer.appendChild(item);
+    likedRestaurants.forEach(function (restaurant) {
+      const item = $('<div class="saved-item"></div>');
+      item.text(restaurant.restaurantName);
+      savedItemsContainer.append(item);
     });
   }
 }
+
+displaySavedItems();
 
 // OPENAI API /////////////////////////////////
 
