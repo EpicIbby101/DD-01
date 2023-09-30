@@ -62,6 +62,10 @@
   background: #0b7dda;
 }
 
+#searchButton {
+  background-color: #007bff;
+}
+
 /* Restaurant List Styles */
 
 #restaurantList {
@@ -143,7 +147,7 @@ h3 {
   top: 15px;
   left: 20px;
   z-index: 1;
-  background-color: #007bff;
+  background-color: #c11f1f;
   color: #fff;
   border-radius: 15px;
   padding: 10px 20px;
@@ -152,7 +156,7 @@ h3 {
 }
 
 .toggle-sidebar-button:hover {
-  background-color: #0056b3;
+  background-color: #c75656;
 }
 
 .sidebar.show-sidebar {
