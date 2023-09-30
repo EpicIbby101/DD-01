@@ -100,7 +100,7 @@
 
 #savedItems {
   position: absolute;
-  top: 80px;
+  top: 110px;
   left: 10px;
 }
 
@@ -111,6 +111,12 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
+}
+
+h3 {
+  position: absolute;
+  top: 70px;
+  left: 10px;
 }
 
 .saved-item:hover {

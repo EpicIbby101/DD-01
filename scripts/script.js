@@ -225,7 +225,6 @@ function createRestaurantItem(place) {
   return restaurantItem;
 }
 
-// Unchanged functions from your original code
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -235,7 +234,6 @@ function shuffleArray(array) {
 }
 
 function getPlaceInfo(placeId) {
-  // For demonstration purposes, create placeholder information
   const placeInfo = {
     address: "69 Baloney Ave, Somewhere, The City",
     openingTimes: [
@@ -246,7 +244,6 @@ function getPlaceInfo(placeId) {
     phone: "123-456-7890",
   };
 
-  // Format the information as HTML
   const infoHTML = `
     <div class="place-info">
       <div class="info-row">
@@ -318,7 +315,7 @@ function displaySavedItems() {
   } else {
     likedRestaurants.forEach(function (restaurant) {
       const item = $('<div class="saved-item"></div>');
-      item.text(restaurant.restaurantName);
+      item.text(restaurant.placeId);
       savedItemsContainer.append(item);
     });
   }
