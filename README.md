@@ -1,5 +1,5 @@
 
-# Dine & Discover - (README pending completion)
+# Dine & Discover - Explore restaurants and holiday destinations
 This app is a user-friendly platform designed to enhance travel experiences by helping users discover exciting places and activities at their chosen destination. Whether you're a globe-trotting adventurer or planning a weekend getaway, this app has you covered.
 
 
@@ -27,6 +27,12 @@ This app is a user-friendly platform designed to enhance travel experiences by h
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 [MIT License](https://choosealicense.com/licenses/mit/)
+
+## Screenshots
+![Screenshot 2023-09-28 180345](https://github.com/EpicIbby101/DD-01/assets/86202881/3d4dfacf-80b8-441c-92f5-88b1e3236d48)
+![Screenshot 2023-09-28 180401](https://github.com/EpicIbby101/DD-01/assets/86202881/b190ac6b-a262-425b-a51c-32a9178ec2b5)
+![Screenshot 2023-09-28 180731](https://github.com/EpicIbby101/DD-01/assets/86202881/43249c21-40c6-449d-bbe3-6762ce8f0438)
+
 
 
 ## Acknowledgements
