@@ -9,7 +9,6 @@ function initMap() {
 
     let hoveringInfoBox = false;
 
-
     $(document).on(
       "mouseenter",
       ".restaurant-item, .featured-item",
@@ -19,18 +18,63 @@ function initMap() {
       }
     );
 
-    $('#infoBox')
-      .on('mouseenter', function () {
+    $("#infoBox")
+      .on("mouseenter", function () {
         hoveringInfoBox = true;
       })
-      .on('mouseleave', function () {
+      .on("mouseleave", function () {
         hoveringInfoBox = false;
         hideInfoBox();
       });
 
-    $(document).on('mouseleave', '.restaurant-item', function () {
+    $(document).on("mouseleave", ".restaurant-item", function () {
       if (!hoveringInfoBox) {
         hideInfoBox();
+      }
+    });
+
+    // Handle 'like' button click event
+    // Handle 'like' button click event
+    $(document).on("click", ".like-button", function () {
+      const placeId = $(this).data("place-id");
+      const likedRestaurants =
+        JSON.parse(localStorage.getItem("likedRestaurants")) || [];
+
+      // Check if the restaurant is already liked
+      const existingLikedRestaurant = likedRestaurants.find(
+        (restaurant) => restaurant.placeId === placeId
+      );
+
+      if (existingLikedRestaurant) {
+        // Restaurant is already liked, remove it from liked list
+        const index = likedRestaurants.indexOf(existingLikedRestaurant);
+        if (index > -1) {
+          likedRestaurants.splice(index, 1);
+        }
+      } else {
+        // Restaurant is not liked, fetch its details and add it to liked list
+        getRestaurantDetails(
+          placeId,
+          function (restaurantDetails) {
+            const likedRestaurant = {
+              placeId: placeId,
+              name: restaurantDetails.name,
+              address: restaurantDetails.vicinity,
+              rating: restaurantDetails.rating,
+              // Add more restaurant details as needed
+            };
+            likedRestaurants.push(likedRestaurant);
+
+            // Save the updated liked list to local storage
+            localStorage.setItem(
+              "likedRestaurants",
+              JSON.stringify(likedRestaurants)
+            );
+
+            // Update the 'like' button text
+            $(this).text("Unlike");
+          }.bind(this)
+        ); // Bind the click event context
       }
     });
 
@@ -86,6 +130,13 @@ function initMap() {
                   const featuredRating = place.rating;
                   const featuredPhotos = place.photos;
                   const featuredPrice = place.price_level;
+
+                  const likeButton = $(
+                    "<button class='like-button' data-place-id='" +
+                      place.place_id +
+                      "'>Like</button>"
+                  );
+                  featuredItem.append(likeButton);
 
                   // Create and append featured place list items
                   const listItem = $("<div class='featured-item'></div>");
@@ -145,13 +196,18 @@ function initMap() {
                 const col = $("<div class='col-md-4'></div>");
                 const restaurantItem = $("<div class='restaurant-item'></div>");
                 restaurantItem.css("height", "140px");
-                // restaurantItem.css("width", "480px")
                 const restaurantName = place.name;
                 const restaurantAddress = place.vicinity;
                 const restaurantRating = place.rating;
                 const photos = place.photos;
                 const restaurantPrice = place.price_level;
 
+                const likeButton = $(
+                  "<button class='like-button' data-place-id='" +
+                    place.place_id +
+                    "'>Like</button>"
+                );
+                restaurantItem.append(likeButton);
 
                 // Create and append restaurant list items
                 const listItem = $("<div class='restaurant-item'></div>");
@@ -175,7 +231,6 @@ function initMap() {
                 details.append(`<span>${restaurantAddress}</span><br>`);
                 details.append(`Rating: ${restaurantRating}<br>`);
                 details.append(`Price Level: ${restaurantPrice}`);
-
 
                 restaurantItem.append(details); // Append to restaurantItem
 
@@ -227,14 +282,14 @@ function getPlaceInfo(placeId) {
   <div class="info-row">
       <span class="info-label">Opening Times:</span>
       <ul class="opening-times-list">
-          ${placeInfo.openingTimes
-      .map((time) => `<li>${time}</li>`)
-      .join('')}
+          ${placeInfo.openingTimes.map((time) => `<li>${time}</li>`).join("")}
       </ul>
   </div>
   <div class="info-row">
       <span class="info-label">Website:</span>
-      <a class="info-link" href="${placeInfo.website}" target="_blank">${placeInfo.website}</a>
+      <a class="info-link" href="${placeInfo.website}" target="_blank">${
+    placeInfo.website
+  }</a>
   </div>
   <div class="info-row">
       <span class="info-label">Phone:</span>
@@ -269,41 +324,86 @@ function showInfoBox(item, info) {
 function hideInfoBox() {
   $("#infoBox").hide();
 }
-// new API (openai API)
+
+// Function to open the sidebar
+function openSidebar() {
+  document.getElementById("sidebar").style.width = "250px"; // Adjust the width as needed
+}
+
+// Function to close the sidebar
+function closeSidebar() {
+  document.getElementById("sidebar").style.width = "0";
+}
+
+// Function to toggle the sidebar
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("show-sidebar");
+}
+
+// Function to display saved items in the sidebar
+function displaySavedItems() {
+  const savedItems = JSON.parse(localStorage.getItem("likedRestaurants")) || [];
+  const savedItemsContainer = document.getElementById("savedItems");
+  savedItemsContainer.innerHTML = ""; // Clear previous content
+
+  if (savedItems.length === 0) {
+    savedItemsContainer.innerHTML = "<p>No saved items yet.</p>";
+  } else {
+    savedItems.forEach(function (placeId) {
+      // Fetch additional details for the saved item here if needed
+      const item = document.createElement("div");
+      item.classList.add("saved-item");
+      item.textContent = placeId;
+      savedItemsContainer.appendChild(item);
+    });
+  }
+}
+
+// Toggle sidebar when the button is clicked
+const toggleSidebarButton = document.getElementById("toggleSidebarButton");
+toggleSidebarButton.addEventListener("click", toggleSidebar);
+
+// Display saved items when the page loads
+window.addEventListener("load", displaySavedItems);
+
+// new API (openai API)///////////////////////////////////////
 
 // Function to display a chat message in the chat interface
 function displayChatMessage(message, role) {
-  const chatbotResponseDiv = document.getElementById('chatbotResponse');
-  const messageParagraph = document.createElement('p');
-  messageParagraph.innerHTML = `<strong>${role === 'user' ? 'User' : 'Chatbot'}:</strong> ${message}`;
+  const chatbotResponseDiv = document.getElementById("chatbotResponse");
+  const messageParagraph = document.createElement("p");
+  messageParagraph.innerHTML = `<strong>${
+    role === "user" ? "User" : "Chatbot"
+  }:</strong> ${message}`;
   chatbotResponseDiv.appendChild(messageParagraph);
 }
 // Handle user's click on the "Ask" button
-document.getElementById('askButton').addEventListener('click', function () {
+document.getElementById("askButton").addEventListener("click", function () {
   // Define userQuestion within the scope of this function
-  const userQuestion = document.getElementById('userInput').value;
-  if (userQuestion.trim() === '') {
-    alert('Please enter a question.');
+  const userQuestion = document.getElementById("userInput").value;
+  if (userQuestion.trim() === "") {
+    alert("Please enter a question.");
     return;
   }
   // Make the API request
   const settings = {
     async: true,
     crossDomain: true,
-    url: 'https://chatgpt-api8.p.rapidapi.com/',
-    method: 'POST',
+    url: "https://chatgpt-api8.p.rapidapi.com/",
+    method: "POST",
     headers: {
-      'content-type': 'application/json',
-      'X-RapidAPI-Key': 'dd689b8e4dmshbfcda1d5393a655p18772cjsnea1824fa60c8',
-      'X-RapidAPI-Host': 'chatgpt-api8.p.rapidapi.com'
+      "content-type": "application/json",
+      "X-RapidAPI-Key": "dd689b8e4dmshbfcda1d5393a655p18772cjsnea1824fa60c8",
+      "X-RapidAPI-Host": "chatgpt-api8.p.rapidapi.com",
     },
     processData: false,
     data: JSON.stringify([
       {
-        "content": userQuestion, // Using userQuestion here
-        "role": "user"
-      }
-    ])
+        content: userQuestion, // Using userQuestion here
+        role: "user",
+      },
+    ]),
   };
   // Make the API request
   $.ajax(settings)
@@ -313,14 +413,17 @@ document.getElementById('askButton').addEventListener('click', function () {
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
       // Handle API request failure
-      console.error('API Request Failed:', textStatus, errorThrown);
+      console.error("API Request Failed:", textStatus, errorThrown);
 
       // Display an error message to the user
-      displayChatMessage(userQuestion, 'user'); // Display user's message
-      displayChatMessage('An error occurred while processing your request. Please try again later.', 'chatbot'); // Display error message
+      displayChatMessage(userQuestion, "user"); // Display user's message
+      displayChatMessage(
+        "An error occurred while processing your request. Please try again later.",
+        "chatbot"
+      ); // Display error message
 
       // Clear the user input field
-      document.getElementById('userInput').value = '';
+      document.getElementById("userInput").value = "";
     });
 });
 
@@ -331,16 +434,19 @@ function handleApiResponse(response, userQuestion) {
     const chatbotAnswer = response.text;
 
     // Display the chatbot's response
-    displayChatMessage(userQuestion, 'user'); // Display user's message
-    displayChatMessage(chatbotAnswer, 'chatbot'); // Display chatbot's response
+    displayChatMessage(userQuestion, "user"); // Display user's message
+    displayChatMessage(chatbotAnswer, "chatbot"); // Display chatbot's response
 
     // Clear the user input field
-    document.getElementById('userInput').value = '';
+    document.getElementById("userInput").value = "";
   } else {
     // Handle cases where the response does not contain chatbot content
-    console.error('API response does not contain chatbot content:', response);
+    console.error("API response does not contain chatbot content:", response);
 
     // Display an appropriate error message to the user
-    displayChatMessage('An error occurred while processing your request. Please try again later.', 'chatbot');
+    displayChatMessage(
+      "An error occurred while processing your request. Please try again later.",
+      "chatbot"
+    );
   }
 }

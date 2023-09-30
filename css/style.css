@@ -88,10 +88,58 @@ form.example::after {
   background-color: #f9f9f9;
   border-radius: 25px;
   transition: transform 0.2s ease-in-out;
+  position: relative;
 }
 
 .restaurant-item:hover {
   transform: scale(1.05);
+}
+
+.like-button {
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Sidebar styles */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* Initially hidden */
+  width: 250px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  overflow-x: hidden;
+  transition: 0.3s;
+}
+
+/* Button styles */
+.toggle-sidebar-button {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.toggle-sidebar-button:hover {
+  background-color: #0056b3;
+}
+
+/* CSS for sidebar animation */
+.sidebar.show-sidebar {
+  left: 0;
 }
 
 .featured-item {
