@@ -3,7 +3,7 @@
 }
 
 #showcase-background-img {
-  position: relative; /* Add relative positioning to create a stacking context */
+  position: relative; 
   min-height: 620px;
 }
 
@@ -18,8 +18,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: brightness(0.4); /* Adjust the brightness as needed */
-  z-index: -1; /* Place it below the content */
+  filter: brightness(0.4); 
+  z-index: -1; 
 }
 
 .example {
@@ -30,7 +30,6 @@
   box-sizing: border-box;
 }
 
-/* Style the search field */
 form.example input[type="text"] {
   padding: 10px;
   font-size: 17px;
@@ -41,7 +40,6 @@ form.example input[type="text"] {
   background: #f1f1f1;
 }
 
-/* Style the submit button */
 form.example button {
   padding: 10px;
   background: #2196f3;
@@ -49,11 +47,8 @@ form.example button {
   font-size: 17px;
   border: 1px solid grey;
   border-left: none;
-  /* Prevent double borders */
   border-top-right-radius: 10px;
-  /* Round the top-left corner */
   border-bottom-right-radius: 10px;
-  /* Round the bottom-left corner */
   cursor: pointer;
 }
 
@@ -61,7 +56,6 @@ form.example button:hover {
   background: #0b7dda;
 }
 
-/* Clear floats */
 form.example::after {
   content: "";
   clear: both;
@@ -72,12 +66,10 @@ form.example::after {
   width: 100px;
 }
 
-/* Center-align the restaurant list */
 #restaurantList {
   text-align: center;
 }
 
-/* Style individual restaurant items */
 .restaurant-item {
   display: flex;
   align-items: center;
@@ -107,11 +99,10 @@ form.example::after {
   border-radius: 5px;
 }
 
-/* Sidebar styles */
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px; /* Initially hidden */
+  left: -250px; 
   width: 250px;
   height: 100%;
   background-color: #fff;
@@ -120,15 +111,14 @@ form.example::after {
   transition: 0.3s;
 }
 
-/* Button styles */
 .toggle-sidebar-button {
   position: fixed;
-  top: 20px;
+  top: 15px;
   left: 20px;
   z-index: 1;
   background-color: #007bff;
   color: #fff;
-  border: none;
+  border-radius: 15px;
   padding: 10px 20px;
   cursor: pointer;
 }
@@ -137,7 +127,6 @@ form.example::after {
   background-color: #0056b3;
 }
 
-/* CSS for sidebar animation */
 .sidebar.show-sidebar {
   left: 0;
 }
@@ -159,7 +148,6 @@ form.example::after {
 
 }
 
-/* Style thumbnail image */
 .featured-item img {
   max-width: 140px;
   max-height: 140px;
@@ -174,7 +162,6 @@ form.example::after {
   border-radius: 25px;
 }
 
-/* Style restaurant details */
 .restaurant-details {
   flex-grow: 1;
 }
@@ -187,12 +174,9 @@ form.example::after {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   display: none;
   z-index: 9999;
-  /* Add any additional styling you need here */
   max-width: 300px;
-  /* Adjust the width as needed */
 }
 
-/* CSS for styling the infoHTML */
 .place-info {
   background-color: #fff;
   border: 1px solid #ccc;
@@ -200,7 +184,6 @@ form.example::after {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   max-width: 300px;
   z-index: 1000;
-  /* Adjust the width as needed */
 }
 
 .info-row {
@@ -213,64 +196,46 @@ form.example::after {
 
 .info-link {
   color: #007bff;
-  /* Link color */
   text-decoration: none;
 }
 
 .info-link:hover {
   text-decoration: underline;
-  /* Underline on hover */
 }
 
 .info-value {
   margin-left: 10px;
-  /* Add some space between label and value */
 }
 
-/* Add any additional styling you need here */
 
-/* Add a custom class for the card container */
 .card-container {
   display: flex;
   justify-content: space-between;
   align-items: stretch;
 }
 
-/* Add custom CSS to make all cards scale slightly on hover */
 .card {
   flex: 1;
   margin-right: 10px;
-  /* Add spacing between cards */
   transition: transform 0.2s ease-in-out;
-  /* Add smooth transition on hover */
   margin-bottom: 60px;
 }
 
-/* Add hover effect to all cards */
 .card:hover {
   transform: scale(1.05);
-  /* Increase the size on hover */
 }
 
-/* Add a custom class for the bigger card */
 .bigger-card {
-  /* Add your custom styling here */
   transform: scale(1.01);
-  /* Slightly increase the size */
 }
 
-/* Add a custom class to all card images */
 .card-img-custom {
-  /* Set a fixed height for the card images */
   height: 200px;
-  /* Adjust the value as needed */
   object-fit: cover;
 }
 
-/* Footer section */
 footer {
   background-color: #333;
-  /* Your desired background color */
   color: white;
   padding: 20px 0;
   text-align: center;
