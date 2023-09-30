@@ -34,7 +34,6 @@ function initMap() {
     });
 
     // Handle 'like' button click event
-    // Handle 'like' button click event
     $(document).on("click", ".like-button", function () {
       const placeId = $(this).data("place-id");
       const likedRestaurants =
@@ -61,7 +60,6 @@ function initMap() {
               name: restaurantDetails.name,
               address: restaurantDetails.vicinity,
               rating: restaurantDetails.rating,
-              // Add more restaurant details as needed
             };
             likedRestaurants.push(likedRestaurant);
 
@@ -104,9 +102,9 @@ function initMap() {
 
           const featuredRequest = {
             location: location,
-            radius: 1000, // Adjust the radius as needed
-            types: ["restaurant"], // Adjust the types as needed
-            keyword: "point_of_interest", // Add a keyword for featured places
+            radius: 1000, 
+            types: ["restaurant"], 
+            keyword: "point_of_interest", 
           };
 
           placesService.nearbySearch(
@@ -313,8 +311,8 @@ function showInfoBox(item, info) {
   infoBox.html(info);
   infoBox.css({
     position: "absolute",
-    top: offset.top + height + 10, // Adjust the vertical position as needed
-    left: offset.left, // Adjust the horizontal position as needed
+    top: offset.top + height + 10, 
+    left: offset.left,
   });
 
   infoBox.show();
@@ -327,7 +325,7 @@ function hideInfoBox() {
 
 // Function to open the sidebar
 function openSidebar() {
-  document.getElementById("sidebar").style.width = "250px"; // Adjust the width as needed
+  document.getElementById("sidebar").style.width = "250px"; 
 }
 
 // Function to close the sidebar
@@ -351,7 +349,6 @@ function displaySavedItems() {
     savedItemsContainer.innerHTML = "<p>No saved items yet.</p>";
   } else {
     savedItems.forEach(function (placeId) {
-      // Fetch additional details for the saved item here if needed
       const item = document.createElement("div");
       item.classList.add("saved-item");
       item.textContent = placeId;
@@ -400,7 +397,7 @@ document.getElementById("askButton").addEventListener("click", function () {
     processData: false,
     data: JSON.stringify([
       {
-        content: userQuestion, // Using userQuestion here
+        content: userQuestion,
         role: "user",
       },
     ]),
