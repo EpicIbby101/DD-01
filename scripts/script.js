@@ -33,48 +33,31 @@ function initMap() {
       }
     });
 
-    // Handle 'like' button click event
-    $(document).on("click", ".like-button", function () {
-      const placeId = $(this).data("place-id");
-      const likedRestaurants =
-        JSON.parse(localStorage.getItem("likedRestaurants")) || [];
+// Handle 'like' button click event
+$(document).on('click', '.like-button', function () {
+  const placeId = $(this).data('place-id');
+  const likedRestaurants = JSON.parse(localStorage.getItem('likedRestaurants')) || [];
 
-      // Check if the restaurant is already liked
-      const existingLikedRestaurant = likedRestaurants.find(
-        (restaurant) => restaurant.placeId === placeId
-      );
-
-      if (existingLikedRestaurant) {
-        // Restaurant is already liked, remove it from liked list
-        const index = likedRestaurants.indexOf(existingLikedRestaurant);
-        if (index > -1) {
+  // Check if the restaurant is already liked
+  if (likedRestaurants.includes(placeId)) {
+      // Restaurant is already liked, remove it from liked list
+      const index = likedRestaurants.indexOf(placeId);
+      if (index > -1) {
           likedRestaurants.splice(index, 1);
-        }
-      } else {
-        // Restaurant is not liked, fetch its details and add it to liked list
-        getRestaurantDetails(
-          placeId,
-          function (restaurantDetails) {
-            const likedRestaurant = {
-              placeId: placeId,
-              name: restaurantDetails.name,
-              address: restaurantDetails.vicinity,
-              rating: restaurantDetails.rating,
-            };
-            likedRestaurants.push(likedRestaurant);
-
-            // Save the updated liked list to local storage
-            localStorage.setItem(
-              "likedRestaurants",
-              JSON.stringify(likedRestaurants)
-            );
-
-            // Update the 'like' button text
-            $(this).text("Unlike");
-          }.bind(this)
-        ); // Bind the click event context
       }
-    });
+  } else {
+      // Restaurant is not liked, add it to liked list
+      likedRestaurants.push(placeId);
+  }
+
+  // Save the updated liked list to local storage
+  localStorage.setItem('likedRestaurants', JSON.stringify(likedRestaurants));
+
+  // Update the 'like' button text
+  $(this).text(likedRestaurants.includes(placeId) ? 'Unlike' : 'Like');
+});
+
+
 
     const placesService = new google.maps.places.PlacesService(map);
 
@@ -335,34 +318,36 @@ function closeSidebar() {
 
 // Function to toggle the sidebar
 function toggleSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  sidebar.classList.toggle("show-sidebar");
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('show-sidebar');
 }
 
 // Function to display saved items in the sidebar
 function displaySavedItems() {
-  const savedItems = JSON.parse(localStorage.getItem("likedRestaurants")) || [];
-  const savedItemsContainer = document.getElementById("savedItems");
-  savedItemsContainer.innerHTML = ""; // Clear previous content
+  const savedItems = JSON.parse(localStorage.getItem('likedRestaurants')) || [];
+  const savedItemsContainer = document.getElementById('savedItems');
+  savedItemsContainer.innerHTML = ''; // Clear previous content
 
   if (savedItems.length === 0) {
-    savedItemsContainer.innerHTML = "<p>No saved items yet.</p>";
+      savedItemsContainer.innerHTML = '<p>No saved items yet.</p>';
   } else {
-    savedItems.forEach(function (placeId) {
-      const item = document.createElement("div");
-      item.classList.add("saved-item");
-      item.textContent = placeId;
-      savedItemsContainer.appendChild(item);
-    });
+      savedItems.forEach(function (placeId) {
+          // Fetch additional details for the saved item here if needed
+          const item = document.createElement('div');
+          item.classList.add('saved-item');
+          item.textContent = placeId;
+          savedItemsContainer.appendChild(item);
+      });
   }
 }
 
 // Toggle sidebar when the button is clicked
-const toggleSidebarButton = document.getElementById("toggleSidebarButton");
-toggleSidebarButton.addEventListener("click", toggleSidebar);
+const toggleSidebarButton = document.getElementById('toggleSidebarButton');
+toggleSidebarButton.addEventListener('click', toggleSidebar);
 
 // Display saved items when the page loads
-window.addEventListener("load", displaySavedItems);
+window.addEventListener('load', displaySavedItems);
+
 
 // new API (openai API)///////////////////////////////////////
 
