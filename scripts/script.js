@@ -60,7 +60,7 @@ function handleLikeButtonClick() {
   }
 
   localStorage.setItem('likedRestaurants', JSON.stringify(likedRestaurants));
-  $(this).text(likedRestaurants.includes(placeId) ? 'Unlike' : 'Like');
+  $(this).text(likedRestaurants.includes(placeId) ? '❤️' : '🖤');
 }
 
 function handleSearchButtonClick() {
@@ -132,16 +132,16 @@ function renderFeaturedPlaces(results, container) {
   const shuffleFeaturedResults = shuffleArray(results);
   const featuredResults = shuffleFeaturedResults.slice(0, 3);
 
-  const featuredRow = $("<div class='row'></div>"); // Create a single row for featured items
+  const featuredRow = $("<div class='row'></div>"); 
 
   $.each(featuredResults, function (index, place) {
     const col = $("<div class='col-md-4'></div>");
     const featuredItem = createFeaturedItem(place);
     col.append(featuredItem);
-    featuredRow.append(col); // Append the featured item to the featured row
+    featuredRow.append(col); 
   });
 
-  container.append(featuredRow); // Append the featured row to the container
+  container.append(featuredRow); 
   container.append("<hr>");
 }
 
@@ -174,7 +174,7 @@ function createFeaturedItem(place) {
 function createLikeButton(placeId) {
   const likeButton = $("<button class='like-button'></button>")
     .data('place-id', placeId)
-    .text('Like');
+    .text('🖤');
   return likeButton;
 }
 

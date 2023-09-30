@@ -1,46 +1,52 @@
-.title {
+/* General Styles */
+
+* {
+  box-sizing: border-box;
+}
+
+.align-center {
   align-items: center;
 }
 
+.text-center {
+  text-align: center;
+}
+
+/* Showcase Styles */
+
 #showcase-background-img {
-  position: relative; 
+  position: relative;
   min-height: 620px;
 }
 
 #showcase-background-img::before {
   content: "";
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   background-image: url('https://source.unsplash.com/1366x768/?food,restaurant');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: brightness(0.4); 
-  z-index: -1; 
+  filter: brightness(0.4);
+  z-index: -1;
 }
 
-.example {
-  align-items: center;
+/* Example Form Styles */
+
+.form-container {
+  display: flex;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-form.example input[type="text"] {
+.form-container input[type="text"] {
   padding: 10px;
   font-size: 17px;
   border: 1px solid grey;
   border-radius: 10px;
-  float: left;
   width: 80%;
   background: #f1f1f1;
 }
 
-form.example button {
+.form-container button {
   padding: 10px;
   background: #2196f3;
   color: white;
@@ -52,19 +58,11 @@ form.example button {
   cursor: pointer;
 }
 
-form.example button:hover {
+.form-container button:hover {
   background: #0b7dda;
 }
 
-form.example::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-#searchButton {
-  width: 100px;
-}
+/* Restaurant List Styles */
 
 #restaurantList {
   text-align: center;
@@ -89,14 +87,14 @@ form.example::after {
 
 .like-button {
   position: absolute;
-  top: 10px; 
-  right: 10px; 
-  padding: 5px 10px;
-  background-color: #007bff;
+  top: 10px;
+  right: 10px;
+  padding: 10px;
+  background-color: #57a8ff97;
   color: #fff;
   border: none;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 100%;
   z-index: 10;
 }
 
@@ -106,10 +104,12 @@ form.example::after {
   left: 10px;
 }
 
+/* Sidebar Styles */
+
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px; 
+  left: -250px;
   width: 250px;
   height: 100%;
   background-color: #fff;
@@ -140,6 +140,8 @@ form.example::after {
   left: 0;
 }
 
+/* Featured Item Styles */
+
 .featured-item {
   display: flex;
   align-items: center;
@@ -154,16 +156,9 @@ form.example::after {
 
 .featured-item:hover {
   transform: scale(1.05);
-
 }
 
-.featured-item img {
-  max-width: 140px;
-  max-height: 140px;
-  margin-right: 10px;
-  border-radius: 25px;
-}
-
+.featured-item img,
 .restaurant-item img {
   max-width: 125px;
   max-height: 125px;
@@ -175,23 +170,19 @@ form.example::after {
   flex-grow: 1;
 }
 
-#info-box {
+/* Info Box Styles */
+
+#info-box,
+.place-info {
   position: absolute;
   background-color: #fff;
   border: 1px solid #ccc;
   padding: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  display: none;
-  z-index: 9999;
   max-width: 300px;
 }
 
 .place-info {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  max-width: 300px;
   z-index: 1000;
 }
 
@@ -216,6 +207,7 @@ form.example::after {
   margin-left: 10px;
 }
 
+/* Card Styles */
 
 .card-container {
   display: flex;
@@ -230,18 +222,17 @@ form.example::after {
   margin-bottom: 60px;
 }
 
-.card:hover {
-  transform: scale(1.05);
-}
-
+.card:hover,
 .bigger-card {
-  transform: scale(1.01);
+  transform: scale(1.05);
 }
 
 .card-img-custom {
   height: 200px;
   object-fit: cover;
 }
+
+/* Footer Styles */
 
 footer {
   background-color: #333;
@@ -251,4 +242,3 @@ footer {
   height: 100%;
   max-width: 100%;
 }
-
