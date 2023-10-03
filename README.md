@@ -20,8 +20,8 @@ This app is a user-friendly platform designed to enhance travel experiences by h
 - Bootstrap
 - Javascript
 - JQuery
-- TripAdvisor API
 - OpenAI API
+- Google Places API
 
 ## Link to deployed app
 https://epicibby101.github.io/DD-01/
@@ -41,7 +41,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgements
 
- - TripAdvisor API
+ - Google Places API
  - OpenAI API
  - Unsplash images
 
