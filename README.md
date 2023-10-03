@@ -22,6 +22,10 @@ This app is a user-friendly platform designed to enhance travel experiences by h
 - JQuery
 - TripAdvisor API
 - OpenAI API
+
+## Link to deployed app
+https://epicibby101.github.io/DD-01/
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
