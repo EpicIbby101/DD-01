@@ -11,6 +11,7 @@ This app is a user-friendly platform designed to enhance travel experiences by h
 - Quickly find what you're looking for without any hassle.
 - Summary of information about each place, including descriptions, ratings, reviews, and contact details.
 - Redirection links to each destination's official website
+- Save your favourite places to the localstorage and access them in the saved tab
 
 
 
